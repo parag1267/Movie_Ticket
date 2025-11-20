@@ -1,0 +1,244 @@
+/* body {
+    font-family: 'Roboto', sans-serif;
+} */
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper {
+    width: 100%;
+    height: 360px;
+    margin-top: 40px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-header {
+    background: linear-gradient(90deg, #0b0c10, #334861, #d9a710);
+    color: white;
+}
+
+.Sign-upButton {
+    background-color: #0b0c10;
+    transition: all 0.4s ease;
+}
+
+.Sign-upButton:hover {
+    background-color: #212e61;
+    transform: scale(1.05);
+}
+
+.top-header {
+    height: 67px;
+}
+
+.logo img {
+    height: 60px;
+    width: 80px;
+}
+
+
+.searchInput {
+    padding-left: 34px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* .profile-image img {
+    height: 31px;
+    width: 31px;
+    border-radius: 50%;
+    object-fit: cover;
+} */
+
+.profile-image i {
+    font-size: 24px;
+    color: #212e61;
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #d9a710;
+    color: #ff4b2b;
+}
+
+.SocialMedia a {
+    color: white;
+    font-size: 16px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.SocialMedia a:hover {
+    background-color: #d9a710;
+    color: white;
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+.cinemaList {
+    background-color: #fff;
+    box-shadow: 0 4px 13px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+
+.cinemaItem {
+    margin: 16px 10px;
+    position: relative;
+    width: 210px;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+.cinemaItem::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+
+.cinemaItem h4 {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    color: white;
+    font-size: 20px;
+    z-index: 2;
+}
+
+
+.cinemaImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+
+.recommendedMoviesList {
+    background-color: #fff;
+    box-shadow: 0 4px 13px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: auto;
+}
+
+
+.recommendedMoviesItem {
+    margin: 16px 10px;
+    position: relative;
+    width: 210px;
+    height: 280px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.recommendedMoviesImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+@media (min-width : 1400px) {
+    .container {
+        width: 1175px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .cinemaItem {
+        height: 240px;
+    }
+
+    .cinemaList {
+        width: 70%;
+        margin: auto;
+        padding: 10px;
+    }
+
+    .recommendedMoviesList {
+        width: 70%;
+        padding: 10px;
+    }
+    .recommendedMoviesItem {
+        height: 240px;
+        margin: 10px;
+    } 
+
+    .recommendedMoviesImage {
+        margin-top: 13px;
+        margin-bottom: 0px;;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .cinemaItem {
+        height: 220px;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .cinemaList {
+        flex-direction: column;
+        align-items: center;
+    }
+    .recommendedMoviesItem {
+        height: 220px;
+        margin: 10px auto;
+        display: block;
+    } 
+
+    .recommendedMoviesList {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .cinemaItem {
+        margin: 10px auto;
+    }
+}

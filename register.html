@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <!-- Bootstrap Css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Goggle Font -->
+    <link rel="stylesheet" href="./assets/font/Roboto/font.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+
+
+    <div class="rounded-4 login-card">
+        <h2 class="text-center">Sign Up</h2>
+
+        <div class="form-floating mt-3 mb-3">
+            <input type="text" class="form-control rounded-4" id="name" placeholder="Your Name">
+            <label for="name">Your Name</label>
+            <span id="nameError" class="error"></span>
+        </div>
+
+        <div class="form-floating mt-3 mb-3">
+            <input type="email" class="form-control rounded-4" id="email" placeholder="name@example.com">
+            <label for="email">Email address</label>
+            <span id="emailError" class="error"></span>
+        </div>
+
+        <div class="form-floating mb-3 position-relative">
+            <input type="password" class="form-control rounded-4" id="password" placeholder="Password">
+            <label for="password">Password</label>
+            <i class="fa-solid fa-eye-slash position-absolute hidePassword" id="togglePassword"></i>
+            <span id="passwordError" class="error"></span>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control rounded-4" id="date" placeholder="Select date">
+            <label for="date">Date of Birth</label>
+            <span id="dateError" class="error"></span>
+        </div>
+
+        <button type="button" class="btn btn-primary w-100 rounded-3" id="registerBtn">Register</button>
+
+        <div class="mt-4 text-center">
+            <p>Already have an Account? <a href="./login.html" class="text-info">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Bootstrap Js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="./js/sign-up.js"></script>
+</body>
+    
+
+</html>

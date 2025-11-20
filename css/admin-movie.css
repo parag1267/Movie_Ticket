@@ -1,0 +1,34 @@
+.btn_align {
+    position: absolute;
+    display: inline-block;
+    right: 18px;
+    top: 18px;
+}
+
+.btn_align button{
+    background-color: #e6e6e6;
+    color: black;
+    font-size: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 31px;
+    width: 31px;
+}
+
+.btn_align button:hover {
+    background-color: #d0d0d0;
+}
+
+.timeRow {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.admin-image {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}

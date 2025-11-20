@@ -1,0 +1,70 @@
+html,body{
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    overflow: visible;
+}
+
+
+.filter-box {
+    background-color: #f3f3f3;
+    border-radius: 12px;
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cinemaFilter {
+    margin-bottom: 20px;
+}
+
+.cinema-card {
+    width: 250px;
+    height: 180px; 
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cinema-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.cinema-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.cinema-name {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cinema-card {
+        width: 100%;
+    }
+
+    .filter-box {
+        margin-bottom: 20px;
+    }
+}

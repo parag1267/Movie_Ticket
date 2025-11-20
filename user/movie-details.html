@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Details</title>
+    <!-- Bootstrap Css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Goggle Font -->
+    <link rel="stylesheet" href="./assets/font/Roboto/font.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/movie.css">
+    <link rel="stylesheet" href="../css/movie-details.css">
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid bg-header">
+            <div class="container d-flex justify-content-between align-items-center top-header">
+                <div class="d-flex flex-row justify-content-center align-items-center logo">
+                    <a href="./user-home.html">
+                        <img src="../assets/images/CinemaValeLogoSvg.svg" alt="header-logo">
+                    </a>
+                </div>
+
+                <div class="position-relative w-50">
+                    <i
+                        class="fa-solid fa-magnifying-glass position-absolute top-50 start-0 translate-middle-y ms-2 text-dark"></i>
+                    <input type="text" class="form-control rounded-3 searchInput"
+                        placeholder="Search for Movies, Cinema and others...">
+                </div>
+
+
+                <div class="d-flex justify-content-center align-items-center gap-4">
+                    <div class="d-flex align-items-center gap-3 profile-image">
+                        <p class="m-0">P.C.HAdiya</p>
+                        <!-- <img src="../assets/images/Background.jpg" alt="Profile icon"> -->
+                        <i class="fa-solid fa-user-large"></i>
+
+                    </div>
+
+                    <div class="py-2 px-3 rounded-3 Sign-upButton">
+                        <a href="../login.html" class="text-white text-decoration-none">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-black text-white">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="../user/user-home.html">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="../user/movie.html">Movies</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="../user/cinema.html">Cinema</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">Plays</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">Sports</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center gap-3 SocialMedia">
+                        <a href="" class="text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="" class="text-white"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="" class="text-white"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="" class="text-white"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="" class="text-white"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container-fluid">
+            <div class="container">
+                <div class="d-flex flex-column flex-md-row gap-4 ">
+
+                    <div class="movie-image">
+                        <img src="../assets/images/Thekerlastory.png" alt="The kerala story" class="img-fluid rounded-3">
+                    </div>
+
+                    <div class="movie-info">
+                        <div class="mb-2">
+                            <h2 class="fw-semibold text-start mt-2">The Kerala Story</h2>
+                            <p class="text-dark">Action • Crime • Adventure</p>
+                            <span class="badge bg-light text-dark border me-1">2D</span>
+                            <span class="badge bg-light text-dark border me-1">3D</span>
+                            <span class="badge bg-light text-dark border me-1">ICE 3D</span>
+                            <span class="badge bg-light text-dark border me-1">4DX 2D</span>
+                        </div>
+
+                        <div class="mb-2">
+                            <span class="badge bg-light text-dark border">Hindi, Gujarati, Malayalam, Marathi, Telugu,
+                                Kannada, Punjabi</span>
+                        </div>
+
+                        <p class="mb-2">2h 30m • 1 Jan, 2024</p>
+
+                        <button class="btn rounded-3 bookBtn">Book Tickets</button>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column my-4">
+                    <h5 class="fw-bold fs-4">About The Kerla Story:</h5>
+                    <p class="">who are coerced into converting to lslam,and go on to join the lslamic state of lrad and syria
+                        (lsls).</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-12 mb-4">
+                        <h5 class="fw-bold mb-3">Movies filter</h5>
+                        <div class="filter-box">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">City</label>
+                                    <select name="city" class="form-select">
+                                        <option value="Surat">Surat</option>
+                                        <option value="Ahmedabad">Ahmedabad</option>
+                                        <option value="Vadodara">Vadodara</option>
+                                        <option value="Bhavnagar">Bhavnagar</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">All Genres</label>
+                                    <select name="genre" class="form-select">
+                                        <option value="Action">Action</option>
+                                        <option value="Comedy">Comedy</option>
+                                        <option value="Drama">Drama</option>
+                                        <option value="Horror">Horror</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Language</label>
+                                    <select name="language" class="form-select">
+                                        <option value="Gujarati">Gujarati</option>
+                                        <option value="Hindi">Hindi</option>
+                                        <option value="English">English</option>
+                                        <option value="Tamil">Tamil</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Show Type</label>
+                                    <div>
+                                        <input type="radio" id="2d" name="showType" class="form-check-input">
+                                        <label for="2d" class="form-check-label">2D</label><br>
+
+                                        <input type="radio" id="3d" name="showType" class="form-check-input">
+                                        <label for="3d" class="form-check-label">3D</label><br>
+
+                                        <input type="radio" id="imax" name="showType" class="form-check-input">
+                                        <label for="imax" class="form-check-label">IMAX</label>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-dark w-100">Apply Filter</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9 col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0">You might also like more.</h5>
+                            <a href="#" class="text-decoration-none fw-medium">View All</a>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-4">
+                            <div class="movie-card">
+                                
+                                <img src="../assets/images/Thekerlastory.png" alt="The Kerala Story">
+                                <h4>The Kerala Story</h4>
+                            </div>
+
+                            <div class="movie-card">
+                                <img src="../assets/images/Thelallo.jpeg" alt="Lallo">
+                                <h4>Lallo</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <!-- Bootstrap Js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

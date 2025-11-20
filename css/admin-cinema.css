@@ -1,0 +1,6 @@
+.admin-image {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
