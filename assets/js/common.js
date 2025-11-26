@@ -20,6 +20,18 @@ if (window.location.pathname != "/user/cinema.html"){
     sessionStorage.setItem("_redirectedCinemaId",JSON.stringify(null));
 }
 
+// Redirect cinemaDetailRedirect
+const cinemaDetailRedirect = (blockId) => {
+    sessionStorage.setItem("_redirectedCinemaDetailId",JSON.stringify(blockId));
+    window.location = "../user/cinema-details.html";
+    event.preventDefault();
+}
+
+// Redirect cinemaDetailRedirect null value
+if(window.localStorage.pathname != "user/cinema_details.html"){
+    sessionStorage.setItem("_redirectedCinemaDetailId",JSON.stringify(null));
+}
+
 // Redirect recommendedMoviesList
 const movieRedirect = (blockId) => {
     sessionStorage.setItem("_redirectedMovieId",JSON.stringify(blockId));
@@ -30,4 +42,17 @@ const movieRedirect = (blockId) => {
 // Redirect recommendedMoviesList
 if(window.location.pathname != "/user/movie.html"){
     sessionStorage.setItem("_redirectedMovieId",JSON.stringify(null));
+}
+
+
+// Redirect recommendedMoviesDetailList 
+const movieDetailRedirect = (blockId) => {
+    sessionStorage.setItem("_redirectedMovieDetailId",JSON.stringify(blockId));
+    window.location = "../user/movie-details.html";
+    event.preventDefault();
+}
+
+// Redirect recommendedMoviesDetailList
+if(window.location.pathname != "/user/movie-details.html"){
+    sessionStorage.setItem("_redirectedMovieDetailId",JSON.stringify(null));
 }
