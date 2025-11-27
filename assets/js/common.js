@@ -22,14 +22,14 @@ if (window.location.pathname != "/user/cinema.html"){
 
 // Redirect cinemaDetailRedirect
 const cinemaDetailRedirect = (blockId) => {
-    sessionStorage.setItem("_redirectedCinemaDetailId",JSON.stringify(blockId));
+    localStorage.setItem("_redirectedCinemaDetailId",JSON.stringify(blockId));
     window.location = "../user/cinema-details.html";
     event.preventDefault();
 }
 
 // Redirect cinemaDetailRedirect null value
-if(window.localStorage.pathname != "user/cinema_details.html"){
-    sessionStorage.setItem("_redirectedCinemaDetailId",JSON.stringify(null));
+if(window.location.pathname != "../user/cinema_details.html"){
+    localStorage.setItem("_redirectedCinemaDetailId",JSON.stringify(null));
 }
 
 // Redirect recommendedMoviesList

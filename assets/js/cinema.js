@@ -17,3 +17,5 @@ ls_cinemaData.map((cinema,index) => {
     
 })
 
+
+
