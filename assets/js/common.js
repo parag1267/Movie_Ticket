@@ -23,14 +23,14 @@ if (window.location.pathname != "/user/cinema.html"){
 // Redirect cinemaDetailRedirect
 const cinemaDetailRedirect = (blockId) => {
     localStorage.setItem("_redirectedCinemaDetailId",JSON.stringify(blockId));
-    window.location = "../user/cinema-details.html";
+    window.location = "../../user/cinema-details.html";
     event.preventDefault();
 }
 
 // Redirect cinemaDetailRedirect null value
-if(window.location.pathname != "../user/cinema_details.html"){
-    localStorage.setItem("_redirectedCinemaDetailId",JSON.stringify(null));
-}
+// if(window.location.pathname != "../../user/cinema_details.html"){
+//     localStorage.setItem("_redirectedCinemaDetailId",JSON.stringify(null));
+// }
 
 // Redirect recommendedMoviesList
 const movieRedirect = (blockId) => {
@@ -47,12 +47,24 @@ if(window.location.pathname != "/user/movie.html"){
 
 // Redirect recommendedMoviesDetailList 
 const movieDetailRedirect = (blockId) => {
-    sessionStorage.setItem("_redirectedMovieDetailId",JSON.stringify(blockId));
-    window.location = "../user/movie-details.html";
+    localStorage.setItem("_redirectedMovieDetailId",JSON.stringify(blockId));
+    window.location = "../../user/movie-details.html";
     event.preventDefault();
 }
 
 // Redirect recommendedMoviesDetailList
 if(window.location.pathname != "/user/movie-details.html"){
-    sessionStorage.setItem("_redirectedMovieDetailId",JSON.stringify(null));
+    localStorage.setItem("_redirectedMovieDetailId",JSON.stringify(null));
+}
+
+// Redirect cinemaRedirect
+const redirectBookTickect = (blockId) => {
+    localStorage.setItem("_redirectedBookTicketId",JSON.stringify(blockId));
+    window.location = "../user/book-ticket.html";
+    event.preventDefault();
+}
+
+// Redirect cinemaRedirect null value
+if (window.location.pathname != "/user/book-ticket.html"){
+    localStorage.setItem("_redirectedBookTicketId",JSON.stringify("null"));
 }

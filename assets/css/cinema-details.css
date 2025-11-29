@@ -60,10 +60,42 @@
     gap: 20px;
 }
 
-.onScreen-cinemaImage img {
+.imgBox {
+    position: relative;
     height: 280px;
     width: 220px;
+    border-radius: 8px;
+    overflow: hidden;
 }
+
+.imgBox img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.imgBox::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 16%;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.imgBox h4 {
+    position: absolute;
+    bottom: 11px;
+    left: 8px;
+    color: white;
+    font-size: 20px;
+    z-index: 2;
+    margin-bottom: 0px;
+}
+
 
 
 

@@ -48,13 +48,22 @@ const addseat = () => {
 
     if(!isvalid) return;
 
+    let ls_cinema = JSON.parse(localStorage.getItem("cinema")) || [];
+    let selectCinemaObj = ls_cinema.find(c => c.cinemaName === selectCinema);    
+
+    let ls_movie = JSON.parse(localStorage.getItem("movie")) || [];
+    let selectMovieObj = ls_movie.find(m => m.movieName === selectMoive);
+
+
     let seatObject = {
         sid : Math.floor(Math.random() * 1000),
         selectCinema : selectCinema,
         selectMoive : selectMoive,
         selectCinemaTimeshow : selectCinemaTimeshow,
         seatCinema : seatCinema,
-        priceSeat : priceSeat
+        priceSeat : priceSeat,
+        cid : selectCinemaObj ? selectCinemaObj.cid : "",
+        mId : selectMovieObj ? selectMovieObj.mId : "",
     }
 
     seatTasks.push(seatObject);

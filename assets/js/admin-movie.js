@@ -63,6 +63,9 @@ const addMovie = () => {
 
     const imagePath = "../assets/images/" + image.files[0].name;
 
+    let ls_cinemaId = JSON.parse(localStorage.getItem("cinema")) || [];
+
+    let selectedCinemaObj = ls_cinemaId.find(c => c.cinemaName === selectCinema);
 
 
     let objec = {
@@ -72,7 +75,7 @@ const addMovie = () => {
         selectCinema,
         image: imagePath,
         selectTime,
-        // cid : cid,
+        cid : selectedCinemaObj ? selectedCinemaObj.cid : "",
     }
 
     moiveTask.push(objec);

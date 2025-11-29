@@ -17,7 +17,7 @@ var swiper = new Swiper(".mySwiper", {
 let ls_cinemaData = JSON.parse(localStorage.getItem("cinema"));
 let cinemaBlock = '';
 ls_cinemaData.map((cinema, index) => {
-    if (index < 6) {
+    if (index < 5) {
         cinemaBlock +=
             `
                 <div class="cinemaItem">
