@@ -3,7 +3,7 @@ console.log(ls_bookTicket)
 let ls_movieData = JSON.parse(localStorage.getItem("movie"));
 console.log(ls_movieData)
 
-let selectBook = ls_movieData.find((ele) => ele.mId == ls_bookTicket);
+let selectBook = ls_movieData.find((ele) => ele.mid == ls_bookTicket);
 
 let allCinemas = [];
 if (selectBook) {

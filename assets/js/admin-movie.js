@@ -1,15 +1,3 @@
-// Sidebar active color change
-const sidebarLinks = document.querySelectorAll('.sidebar a');
-
-sidebarLinks.forEach(link => {
-    link.addEventListener('click', function () {
-        sidebarLinks.forEach(l => l.classList.remove('active')); 
-        this.classList.add('active'); 
-    });
-});
-
-
-
 let moiveTask = JSON.parse(localStorage.getItem("movie")) ? JSON.parse(localStorage.getItem("movie")) : [];
 
 const addMovie = () => {
@@ -17,13 +5,11 @@ const addMovie = () => {
     const decription = document.getElementById("decription").value.trim();
     const selectCinema = document.getElementById("selectCinema").value;
     const image = document.getElementById("movieImage");
-    // const selectTime = document.getElementById("selectTime").value.trim();
-    // Collect ALL Time Inputs
+
+    // All time
     const selectTime = [...document.querySelectorAll(".timeRow input")]
         .map(t => t.value)
         .filter(t => t !== "");
-
-
 
     const moiveNameError = document.getElementById("moiveNameError");
     const decriptionError = document.getElementById("decriptionError");
@@ -69,13 +55,13 @@ const addMovie = () => {
 
 
     let objec = {
-        mId: Math.floor(Math.random() * 1000),
+        mid: Math.floor(Math.random() * 1000),
         movieName,
         decription,
         selectCinema,
         image: imagePath,
         selectTime,
-        cid : selectedCinemaObj ? selectedCinemaObj.cid : "",
+        cid: selectedCinemaObj ? selectedCinemaObj.cid : "",
     }
 
     moiveTask.push(objec);
@@ -84,24 +70,25 @@ const addMovie = () => {
     const closemodal = document.getElementById("exampleModal");
     const modal = bootstrap.Modal.getInstance(closemodal);
     modal.hide();
-    
+
     alert("Add movie");
 
 
-    movieName.textContent = "";
-    decription.textContent = "";
-    selectCinema.textContent = "";
-    image.textContent = "";
-    selectTime.textContent = "";
+    document.getElementById("movieName").value = "";
+    document.getElementById("decription").value = "";
+    document.getElementById("selectCinema").value = "";
+    document.getElementById("movieInsert").src = "";
+    document.getElementById("selectTime").value = "";
+
 
 
     viewData();
 }
 
-const handleRemove = (mId) => {
-    if(!confirm("Are you sure you want to delete this record?")) return;
-    moiveTask = moiveTask.filter(item => item.mId !== mId);
-    localStorage.setItem("movie",JSON.stringify(moiveTask));
+const handleRemove = (mid) => {
+    moiveTask = moiveTask.filter(item => item.mid !== mid);
+    localStorage.setItem("movie", JSON.stringify(moiveTask));
+    viewData();
 }
 
 const viewData = () => {
@@ -110,9 +97,9 @@ const viewData = () => {
     let allRecord = JSON.parse(localStorage.getItem("movie")) || [];
     allRecord.map((value, index) => {
         let tr = document.createElement("tr");
-        tr.innerHTML=
+        tr.innerHTML =
             `
-                <td>${value.mId}</td>
+                <td>${value.mid}</td>
                 <td>${value.movieName}</td>
                 <td>${value.decription}</td>
                 <td>${value.selectCinema}</td>
@@ -127,16 +114,16 @@ const viewData = () => {
         let td = document.createElement("td");
         let deleteButton = document.createElement("button");
         let deleteIcon = document.createElement("i");
-        deleteIcon.classList.add("fa-solid","fa-trash");
+        deleteIcon.classList.add("fa-solid", "fa-trash");
         deleteButton.appendChild(deleteIcon);
 
-        deleteButton.addEventListener("click",() => {
-            handleRemove(value.mId)
+        deleteButton.addEventListener("click", () => {
+            handleRemove(value.mid)
         })
 
         let editButton = document.createElement("button");
         let editIcon = document.createElement("i");
-        editIcon.classList.add("fa-solid","fa-pen-to-square");
+        editIcon.classList.add("fa-solid", "fa-pen-to-square");
         editButton.appendChild(editIcon);
 
         td.appendChild(deleteButton);
@@ -165,35 +152,19 @@ function cinemaDropdown() {
         dropDown.appendChild(option);
     });
 }
-// This is the fix
-// document.addEventListener("DOMContentLoaded", cinemaDropdown);
 cinemaDropdown();
 
 
 
-document.getElementById("selectCinema").addEventListener("change", function () {
-    let selectedCinema = this.value;
-    if (selectedCinema !== "") {
-        localStorage.setItem("selectedCinema",selectedCinema);
-    }
-});
-
 // Select Time
 let timeRowId = JSON.parse(localStorage.getItem("_timeRowId")) || [];
 
-if (timeRowId.length === 0) {
-    addNewRow();
-} else {
-    timeRowId.forEach(id => {
-        createRow(id);
-    });
-}
 
 // Create Time Row Function
 function createRow(id) {
     let div = document.createElement("div");
     div.classList.add("form-floating", "mb-3", "timeRow");
-    div.id = "row-" + id;
+    div.setAttribute("id", id);
 
     let input = document.createElement("input");
     input.type = "time";
@@ -225,17 +196,6 @@ function createRow(id) {
     document.getElementById("dyTimeRow").appendChild(div);
 }
 
-
-// Add New Row
-function addNewRow() {
-    let id = Math.floor(Math.random() * 1000);
-    timeRowId.push(id);
-    localStorage.setItem("_timeRowId", JSON.stringify(timeRowId));
-
-    createRow(id);
-}
-
-
 // Remove Row
 function removeRow(id) {
     document.getElementById(id)?.remove();
@@ -245,7 +205,6 @@ function removeRow(id) {
 }
 
 function addNewRow() {
-    // timeRowId = [];
     let randomNumber = Math.floor(Math.random() * 1000);
     timeRowId.push(randomNumber);
     localStorage.setItem("_timeRowId", JSON.stringify(timeRowId));
@@ -283,16 +242,4 @@ function addNewRow() {
     div.appendChild(divButton);
 
     document.getElementById("dyTimeRow").appendChild(div);
-}
-
-function removeRow(randomNumber) {
-    let row = document.getElementById(randomNumber);
-    if (row) {
-        row.remove();
-    }
-
-    let storeId = JSON.parse(localStorage.getItem("_timeRowId")) || [];
-    storeId = storeId.filter(id => id !== randomNumber);
-    localStorage.setItem("_timeRowId", JSON.stringify(storeId));
-    timeRowId = storeId;
 }

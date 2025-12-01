@@ -7,7 +7,7 @@ ls_movieData.map((movie,index) => {
     blockMovie +=
     `
         <div class="movie-card">
-            <a href="" onclick="movieDetailRedirect(${movie.mId})" class="" id="block-${movie.mId}">
+            <a href="" onclick="movieDetailRedirect(${movie.mid})" class="" id="block-${movie.mid}">
                 <img src=${movie.image} alt="${movie.movieName}">
                 <h4>${movie.movieName}</h4>
             </a>

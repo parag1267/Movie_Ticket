@@ -5,7 +5,7 @@ let ls_selectedMovieIndex = JSON.parse(localStorage.getItem("_redirectedMovieDet
 console.log(ls_selectedMovieIndex);
 
 
-let selectedMovie = ls_movie.find((ele) => ele.mId == ls_selectedMovieIndex);
+let selectedMovie = ls_movie.find((ele) => ele.mid == ls_selectedMovieIndex);
 console.log(selectedMovie);
 
 if (selectedMovie) {
@@ -33,7 +33,7 @@ if (selectedMovie) {
 
             <p class="mb-2">2h 30m • 1 Jan, 2024</p>
 
-            <button class="btn rounded-3 bookBtn" onclick="redirectBookTickect(${selectedMovie.mId})">Book Tickets</button>
+            <button class="btn rounded-3 bookBtn" onclick="redirectBookTickect(${selectedMovie.mid})">Book Tickets</button>
         </div>
     </div>
 

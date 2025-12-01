@@ -21,7 +21,7 @@ ls_cinemaData.map((cinema, index) => {
         cinemaBlock +=
             `
                 <div class="cinemaItem">
-                    <a href="" onclick="cinemaRedirect(${cinema.cid})" class="" id="block-${cinema.cid}">
+                    <a href="" onclick="cinemaDetailRedirect(${cinema.cid})" class="" id="block-${cinema.cid}">
                         <img src="${cinema.image}" alt="${cinema.cinemaName}" class="cinemaImage">
                         <h4>${cinema.cinemaName}</h4>
                     </a>
@@ -39,7 +39,7 @@ ls_movieData.map((movie, index) => {
         movieBlock +=
             `
                 <div class="recommendedMoviesItem">
-                    <a href="" onclick="movieRedirect(${movie.mId})" class="" id="block-${movie.mId}">
+                    <a href="" onclick="movieDetailRedirect(${movie.mid})" class="" id="block-${movie.mid}">
                         <img src="${movie.image}" alt="${movie.movieName}"
                         class="recommendedMoviesImage">
                         <h4>${movie.movieName}</h4>
