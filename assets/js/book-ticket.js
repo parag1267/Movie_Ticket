@@ -1,7 +1,6 @@
 let ls_bookTicket = JSON.parse(localStorage.getItem("_redirectedBookTicketId"));
-console.log(ls_bookTicket)
 let ls_movieData = JSON.parse(localStorage.getItem("movie"));
-console.log(ls_movieData)
+
 
 let selectBook = ls_movieData.find((ele) => ele.mid == ls_bookTicket);
 
@@ -37,12 +36,16 @@ if (selectBook) {
         if (Array.isArray(cinema.selectTime)) {
             cinema.selectTime.forEach(time => {
                 timeButtons +=
-                    `<button class="btn btn-outline-dark btn-sm rounded-3" > ${time}</button>`
+                    `<button class="btn btn-outline-dark btn-sm rounded-3 timeBtn"
+                        data-cinema = "${cinema.selectCinema}"
+                        data-time = "${time}"
+                        data-movie = "${selectBook.movieName}"> ${time}</button>`
             });
         }
 
+
         ls_MovieBlock +=
-        `
+            `
             <div class="border py-4 px-2" >
                 <div class="d-flex flex-row justify-content-start gap-5">
                     <div class="d-flex flex-column">
@@ -66,11 +69,32 @@ if (selectBook) {
         `;
     });
 
-    ls_MovieBlock += 
-    `
+    ls_MovieBlock +=
+        `
         </div >
         </section >
     `;
 }
 
 document.getElementById("ListBook").innerHTML = ls_MovieBlock;
+
+let allTimeBtns = document.querySelectorAll(".timeBtn");
+allTimeBtns.forEach(btn => {
+    btn.addEventListener("click", function () {
+        let selectedCinema = this.getAttribute("data-cinema");
+        let selectedTime = this.getAttribute("data-time");
+        let selectedMovie = this.getAttribute("data-movie");
+
+        let bookingData = {
+            movieName: selectedMovie,
+            cinemaName: selectedCinema,
+            time: selectedTime,
+        };
+
+        localStorage.setItem("selectedBooking", JSON.stringify(bookingData));
+        alert("Time Selected Successfully added");
+        console.log('Saved Data : ', bookingData);
+
+        window.location.href = "seat_design.html";
+    })
+})

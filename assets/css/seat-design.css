@@ -1,0 +1,40 @@
+.movie-First{
+    background-color: gray !important;
+    padding: 0px;
+}
+
+.seatInfo button{
+    height: 40px;
+    width: 40px;
+    padding: 4px;
+    min-width: auto;
+    max-width: auto;
+    font-size: 10px;
+    border: 1px solid green;
+    color: green;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.seatInfo button:hover{
+    background-color: #28a745;
+    color: white;
+    transform: scale(1.1);
+}
+
+
+.seatInfo button.active{
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: black;
+    transform: scale(1.1);
+}
+
+
+.seatInfo button.booked{
+    background-color: #dcdcdc;
+    color: #777;
+    border-color: #aaa;
+    cursor: not-allowed;
+    transform: none;
+}

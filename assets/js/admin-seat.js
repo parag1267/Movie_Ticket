@@ -1,4 +1,5 @@
 let seatTasks = JSON.parse(localStorage.getItem("seatData")) ? JSON.parse(localStorage.getItem("seatData")) : [];
+let editId = null;
 
 const addseat = () => {
     const selectCinema = document.getElementById("selectCinema").value;
@@ -86,6 +87,23 @@ const handleRemove = (sid) => {
     seatView();
 }
 
+const updateData = (sid) => {
+    let editData = seatTasks.find(item => item.sid === sid);
+    editId = sid;
+
+    document.getElementById("selectCinema").value = editData.selectCinema;
+    document.getElementById("selectMoive").value = editData.selectMoive;
+    document.getElementById("selectCinemaTimeshow").value = editData.selectCinemaTimeshow;
+    document.getElementById("seatCinema").value = editData.seatCinema.length;
+    document.getElementById("priceSeat").value = editData.priceSeat;
+
+    // Open modal
+    const myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+    myModal.show();
+
+    document.getElementById("saveBtn").textContent = "Update Cinema";
+}
+
 const seatView = () => {
     let tableBody = document.getElementById("viewData");
     tableBody.innerHTML = "";
@@ -116,6 +134,10 @@ const seatView = () => {
         let editIcon = document.createElement("i");
         editIcon.classList.add("fa-solid", "fa-pen-to-square");
         editButton.appendChild(editIcon);
+
+        editButton.addEventListener("click", () => {
+            updateData(value.sid);
+        })
 
         td.appendChild(deleteButton);
         td.appendChild(editButton);

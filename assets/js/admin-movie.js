@@ -91,6 +91,24 @@ const handleRemove = (mid) => {
     viewData();
 }
 
+const updateData = (mid) => {
+    let editData = moiveTask.find(item => item.mid === mid);
+    editId = mid;
+
+    document.getElementById("movieName").value = editData.movieName;
+    document.getElementById("decription").value = editData.decription;
+    document.getElementById("selectCinema").value = editData.selectCinema;
+    document.getElementById("movieImage").src = editData.image;
+    document.getElementById("selectTime").value = editData.selectTime;
+
+    // Open modal
+    const myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+    myModal.show();
+
+    document.getElementById("saveBtn").textContent = "Update Cinema";
+
+}
+
 const viewData = () => {
     let tableBody = document.getElementById("viewData");
     tableBody.innerHTML = "";
@@ -125,6 +143,10 @@ const viewData = () => {
         let editIcon = document.createElement("i");
         editIcon.classList.add("fa-solid", "fa-pen-to-square");
         editButton.appendChild(editIcon);
+
+        editButton.addEventListener("click", ()=> {
+            updateData(value.mid);
+        })
 
         td.appendChild(deleteButton);
         td.appendChild(editButton);
