@@ -38,3 +38,19 @@
     cursor: not-allowed;
     transform: none;
 }
+
+.seatBtn {
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.available {
+    background: #9effa1;
+}
+
+.booked {
+    background: #c4c4c4;
+    color: white;
+}

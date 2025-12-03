@@ -59,7 +59,6 @@ function login() {
         const user = users.find(u => u.email === email && u.password === password);
 
         if (user) {
-            alert("Login Successfull");
             localStorage.setItem("loggedInUser", JSON.stringify(user));
             window.location.href = "./user/user-home.html";
         }

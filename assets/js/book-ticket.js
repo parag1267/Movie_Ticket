@@ -35,11 +35,14 @@ if (selectBook) {
         let timeButtons = '';
         if (Array.isArray(cinema.selectTime)) {
             cinema.selectTime.forEach(time => {
-                timeButtons +=
-                    `<button class="btn btn-outline-dark btn-sm rounded-3 timeBtn"
-                        data-cinema = "${cinema.selectCinema}"
-                        data-time = "${time}"
-                        data-movie = "${selectBook.movieName}"> ${time}</button>`
+                timeButtons += `
+                <button class="btn btn-outline-dark btn-sm rounded-3 timeBtn"
+                    data-movie="${cinema.movieName}"
+                    data-cinema="${cinema.selectCinema}"
+                    data-time="${time}">
+                    ${time}
+                </button>`;
+
             });
         }
 
@@ -79,22 +82,30 @@ if (selectBook) {
 document.getElementById("ListBook").innerHTML = ls_MovieBlock;
 
 let allTimeBtns = document.querySelectorAll(".timeBtn");
+
 allTimeBtns.forEach(btn => {
     btn.addEventListener("click", function () {
-        let selectedCinema = this.getAttribute("data-cinema");
-        let selectedTime = this.getAttribute("data-time");
-        let selectedMovie = this.getAttribute("data-movie");
 
-        let bookingData = {
-            movieName: selectedMovie,
-            cinemaName: selectedCinema,
-            time: selectedTime,
-        };
+    let selectedMovie = this.dataset.movie;
+    let selectedCinema = this.dataset.cinema;
+    let selectedTime = this.dataset.time;
 
-        localStorage.setItem("selectedBooking", JSON.stringify(bookingData));
-        alert("Time Selected Successfully added");
-        console.log('Saved Data : ', bookingData);
+    let seatData = JSON.parse(localStorage.getItem("seatData")) || [];
 
+    let selectedSlot = seatData.find(seat =>
+        seat.selectMoive === selectedMovie && 
+        seat.selectCinema === selectedCinema &&
+        seat.selectCinemaTimeshow === selectedTime
+    );
+
+    if (selectedSlot) {
+        localStorage.setItem("bookingTime",JSON.stringify(selectedSlot));
+        console.log("MATCH FOUND:", selectedSlot);
         window.location.href = "seat_design.html";
-    })
-})
+    } else {
+        console.log("NO MATCH FOUND");
+        alert("Seat data not found!");
+    }
+});
+
+});

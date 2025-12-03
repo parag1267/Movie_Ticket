@@ -205,6 +205,16 @@ body {
     border-radius: 8px;
 }
 
+.footer-links a {
+    color: #cccccc;
+    text-decoration: none;
+    padding-bottom: 10px;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
 @media (min-width : 1400px) {
     .container {
         width: 1175px;

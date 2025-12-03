@@ -80,7 +80,6 @@ function registerUser() {
 
         users.push(userData);
         localStorage.setItem("registerUser", JSON.stringify(users));
-        alert("Registration Successful");
 
         document.getElementById("name").value = "";
         document.getElementById("email").value = "";
