@@ -1,4 +1,5 @@
-let moiveTask = JSON.parse(localStorage.getItem("movie")) ? JSON.parse(localStorage.getItem("movie")) : [];
+let moiveTask = JSON.parse(localStorage.getItem("movie")) || [];
+let editId = null;
 
 const addMovie = () => {
     const movieName = document.getElementById("movieName").value.trim();
@@ -17,11 +18,11 @@ const addMovie = () => {
     const movieImageError = document.getElementById("movieImageError");
     const selectTimeError = document.getElementById("selectTimeError");
 
-    moiveNameError.textContent = "";
-    decriptionError.textContent = "";
-    selectCinemaError.textContent = "";
-    movieImageError.textContent = "";
-    selectTimeError.textContent = "";
+    // moiveNameError.textContent = "";
+    // decriptionError.textContent = "";
+    // selectCinemaError.textContent = "";
+    // movieImageError.textContent = "";
+    // selectTimeError.textContent = "";
 
     let isvalid = true;
     if (movieName === "") {
@@ -36,10 +37,7 @@ const addMovie = () => {
         selectCinemaError.textContent = "Please select cinema name";
         isvalid = false;
     }
-    if (image.files.length === 0) {
-        movieImageError.textContent = "Please select movie image";
-        isvalid = false;
-    }
+
     if (selectTime.length === 0) {
         selectTimeError.textContent = "Please select movie time";
         isvalid = false;
@@ -47,42 +45,72 @@ const addMovie = () => {
 
     if (!isvalid) return;
 
-    const imagePath = "../assets/images/" + image.files[0].name;
-
     let ls_cinemaId = JSON.parse(localStorage.getItem("cinema")) || [];
 
     let selectedCinemaObj = ls_cinemaId.find(c => c.cinemaName === selectCinema);
 
+    let imagePath = '';
 
-    let objec = {
-        mid: Math.floor(Math.random() * 1000),
-        movieName,
-        decription,
-        selectCinema,
-        image: imagePath,
-        selectTime,
-        cid: selectedCinemaObj ? selectedCinemaObj.cid : "",
+    if (editId === null) {
+        // ADD Mode
+        if (image.files.length === 0) {
+            movieImageError.textContent = "Please select movie image";
+            return;
+        }
+
+        imagePath = "../assets/images/" + image.files[0].name;
+
+        let obj = {
+            mid: Math.floor(Math.random() * 1000),
+            movieName,
+            decription,
+            selectCinema,
+            image: imagePath,
+            selectTime,
+            cid: selectedCinemaObj ? selectedCinemaObj.cid : ""
+        };
+
+        moiveTask.push(obj);
+        alert("Movie Added");
     }
 
-    moiveTask.push(objec);
+    else {
+        // UPDATE Mode
+        let index = moiveTask.findIndex(item => item.mid === editId);
+
+        if (index !== -1) {
+            imagePath = image.files.length === 0
+                ? moiveTask[index].image
+                : "../assets/images/" + image.files[0].name;
+
+            moiveTask[index] = {
+                mid: editId,
+                movieName,
+                decription,
+                selectCinema,
+                image: imagePath,
+                selectTime,
+                cid: selectedCinemaObj ? selectedCinemaObj.cid : ""
+            };
+
+            alert("Movie Updated");
+            editId = null;
+        }
+    }
+
+
     localStorage.setItem("movie", JSON.stringify(moiveTask));
-
-    const closemodal = document.getElementById("exampleModal");
-    const modal = bootstrap.Modal.getInstance(closemodal);
-    modal.hide();
-
-    alert("Add movie");
-
 
     document.getElementById("movieName").value = "";
     document.getElementById("decription").value = "";
     document.getElementById("selectCinema").value = "";
-    document.getElementById("movieInsert").src = "";
-    document.getElementById("selectTime").value = "";
-
-
+    document.getElementById("movieImage").value = "";
+    document.getElementById("dyTimeRow").innerHTML = "";
 
     viewData();
+    const closemodal = document.getElementById("exampleModal");
+    const modal = bootstrap.Modal.getInstance(closemodal);
+    modal.hide();
 }
 
 const handleRemove = (mid) => {
@@ -93,18 +121,22 @@ const handleRemove = (mid) => {
 
 const updateData = (mid) => {
     let editData = moiveTask.find(item => item.mid === mid);
+    if (!editData) return;
     editId = mid;
 
     document.getElementById("movieName").value = editData.movieName;
     document.getElementById("decription").value = editData.decription;
     document.getElementById("selectCinema").value = editData.selectCinema;
-    document.getElementById("movieImage").src = editData.image;
-    document.getElementById("selectTime").value = editData.selectTime;
+    // document.getElementById("movieImage").src = editData.image;
+    document.getElementById("dyTimeRow").innerHTML = "";
+    editData.selectTime.forEach(time => {
+        let randomId = Math.floor(Math.random() * 1000);
+        createRow(randomId, time);
+    });
 
     // Open modal
     const myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
     myModal.show();
-
     document.getElementById("saveBtn").textContent = "Update Cinema";
 
 }
@@ -112,8 +144,7 @@ const updateData = (mid) => {
 const viewData = () => {
     let tableBody = document.getElementById("viewData");
     tableBody.innerHTML = "";
-    let allRecord = JSON.parse(localStorage.getItem("movie")) || [];
-    allRecord.map((value, index) => {
+    moiveTask.forEach((value, index) => {
         let tr = document.createElement("tr");
         tr.innerHTML =
             `
@@ -144,7 +175,7 @@ const viewData = () => {
         editIcon.classList.add("fa-solid", "fa-pen-to-square");
         editButton.appendChild(editIcon);
 
-        editButton.addEventListener("click", ()=> {
+        editButton.addEventListener("click", () => {
             updateData(value.mid);
         })
 
@@ -155,7 +186,7 @@ const viewData = () => {
 
         tableBody.appendChild(tr);
     });
-};
+}
 viewData();
 
 
@@ -183,7 +214,7 @@ let timeRowId = JSON.parse(localStorage.getItem("_timeRowId")) || [];
 
 
 // Create Time Row Function
-function createRow(id) {
+function createRow(id, timeValue = "") {
     let div = document.createElement("div");
     div.classList.add("form-floating", "mb-3", "timeRow");
     div.setAttribute("id", id);
@@ -191,6 +222,7 @@ function createRow(id) {
     let input = document.createElement("input");
     input.type = "time";
     input.classList.add("form-control", "rounded-4");
+    input.value = timeValue;
 
     let label = document.createElement("label");
     label.textContent = "Select Time";

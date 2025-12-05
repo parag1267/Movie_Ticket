@@ -7,10 +7,10 @@ const addseat = () => {
     const selectCinemaTimeshow = document.getElementById("selectCinemaTimeshow").value;
     const seatCinema = document.getElementById("seatCinema").value.trim();
     const priceSeat = document.getElementById("priceSeat").value.trim();
-    
+
     let seat_array = [];
     const total_seats = parseInt(seatCinema);
-    for(let i=1;i<=total_seats;i++){
+    for (let i = 1; i <= total_seats; i++) {
         seat_array.push(0);
     }
 
@@ -51,19 +51,40 @@ const addseat = () => {
     let ls_movie = JSON.parse(localStorage.getItem("movie")) || [];
     let selectMovieObj = ls_movie.find(m => m.movieName === selectMoive);
 
+    if (editId == null) {
+        let seatObject = {
+            sid: Math.floor(Math.random() * 1000),
+            selectCinema: selectCinema,
+            selectMoive: selectMoive,
+            selectCinemaTimeshow: selectCinemaTimeshow,
+            seatCinema: seat_array,
+            priceSeat: priceSeat,
+            cid: selectCinemaObj ? selectCinemaObj.cid : "",
+            mid: selectMovieObj ? selectMovieObj.mid : "",
+        }
 
-    let seatObject = {
-        sid: Math.floor(Math.random() * 1000),
-        selectCinema: selectCinema,
-        selectMoive: selectMoive,
-        selectCinemaTimeshow: selectCinemaTimeshow,
-        seatCinema: seat_array,
-        priceSeat: priceSeat,
-        cid: selectCinemaObj ? selectCinemaObj.cid : "",
-        mid: selectMovieObj ? selectMovieObj.mid : "",
+        seatTasks.push(seatObject);
     }
 
-    seatTasks.push(seatObject);
+    else {
+        let index = seatTasks.findIndex(item => item.sid === editId);
+        seatTasks[index] = {
+            sid : editId,
+            seatCinema : seat_array,
+            priceSeat : priceSeat,
+        }
+
+        if (index !== -1) {
+            seatTasks[index].selectCinema = selectCinema;
+            seatTasks[index].selectMoive = selectMoive;
+            seatTasks[index].selectCinemaTimeshow = selectCinemaTimeshow;
+            seatTasks[index].cid = selectCinemaObj ? selectCinemaObj.cid : "";
+            seatTasks[index].mid = selectMovieObj ? selectMovieObj.mid : "";
+        }
+        editId = null;
+    }
+
+
     localStorage.setItem("seatData", JSON.stringify(seatTasks));
 
     const closemodal = document.getElementById("exampleModal");
@@ -150,8 +171,6 @@ const seatView = () => {
 seatView();
 
 
-
-
 function cinemaDropdown() {
     let cinemaData = JSON.parse(localStorage.getItem("cinema")) || [];
     let dropDown = document.getElementById("selectCinema");
@@ -222,6 +241,8 @@ function timeShowDropdown() {
 cinemaDropdown();
 movieDropdown();
 timeShowDropdown();
+
+
 
 
 

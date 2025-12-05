@@ -113,7 +113,6 @@ const updateData = (cid) => {
 }
 
 
-
 const viewData = () => {
     const tableBody = document.getElementById("viewData");
     tableBody.innerHTML = "";
